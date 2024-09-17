@@ -1,0 +1,150 @@
+/* Estilos generales para la sección */
+#informacion-individual {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+#informacion-individual h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Ocultar los elementos inicialmente */
+.oculto {
+    display: none;
+}
+
+
+/* Selección de legajo */
+#informacion-individual div:first-of-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#informacion-individual label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#informacion-individual select {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Tarjeta personal */
+#tarjeta-personal {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#tarjeta-personal > div {
+    margin-right: 20px;
+}
+
+#tarjeta-personal img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#informacion-basica-individual{
+    flex: auto;
+}
+
+#informacion-basica-individual h3,
+#informacion-basica-individual h4,
+#informacion-basica-individual h5 {
+    margin: 5px 0;
+}
+
+#resumen-entregas-epp h3 {
+    margin-bottom: 10px;
+}
+
+#resumen-entregas-epp h4 {
+    margin: 3px 0;
+}
+
+/* Opciones de botones */
+#opciones {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#opciones button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#opciones button:hover {
+    background-color: #2980b9;
+}
+
+/* Tabla de información */
+#tablas-informacion-individual table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#tablas-informacion-individual table th,
+#tablas-informacion-individual table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#tablas-informacion-individual table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+#tablas-informacion-individual table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    #tarjeta-personal {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #tarjeta-personal > div {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #opciones {
+        flex-direction: column;
+    }
+
+    #opciones button {
+        margin-bottom: 10px;
+    }
+}

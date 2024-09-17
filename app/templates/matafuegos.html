@@ -1,0 +1,85 @@
+<!-- templates/matafuegos.html -->
+{% extends "layout.html" %}
+
+{% block title %}Página Principal{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="../static/styles/tables.css">
+{% endblock %}
+    
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Matafuegos</h1>
+
+<div>
+    <h2>Principal</h2>
+    <div>
+        <button>Registrar Movimiento</button>
+        <button>Historial</button>
+        <button>Recargas</button>
+        <button>Informacion Detallada</button>
+    </div>
+</div>
+<div>
+    <h2>Resumen</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Disponibles</th>
+                <th>Vencidos</th>
+            </tr>
+            <tr>
+                <th>10 kg</th>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>5 kg</th>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>2.5 kg</th>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>1 kg</th>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+<div>
+    <h2>Lista Matafuegos</h2>
+
+    <div>
+        <button> + </button>
+        <button> - </button>
+        <button>Editar</button>
+
+        <input type="text">
+        <button>Buscar</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Matafuego</th>
+                <th>Carga</th>
+                <th>Vencimiento</th>
+                <th>Ubicacion</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las filas se insertan con js -->
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,117 @@
+/* General */
+#entrega-diaria {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo para los grupos de formulario */
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.form-group label {
+    width: 30%;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 65%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 60px;
+}
+
+/* Ajustes específicos para la sección "Nombre del Elemento" */
+#nombre-elemento-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#otros-checkbox {
+    margin-left: 10px;
+}
+
+#otros-checkbox + label {
+    margin-left: 5px;
+}
+
+#input-otros.oculto {
+    display: none;
+}
+
+/* Clase para ocultar elementos */
+/* .oculto {
+    display: none;
+} */
+
+
+/* Botón de agregar */
+#agregar-elemento {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#agregar-elemento:hover {
+    background-color: #2980b9;
+}
+
+/* Detalles agregados (globo de texto) */
+#detalles-agregados {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    border: 1px solid #bdc3c7;
+    min-height: 100px;
+}
+
+#detalles-agregados p {
+    color: #333;
+}
+
+/* Botón de aceptar */
+#aceptar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#aceptar:hover {
+    background-color: #219150;
+}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}Página Principal{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="../static/styles/tables.css">
+{% endblock %}
+    
+{% block scripts %}
+<script src="../static/scripts/index.js" defer></script>
+{% endblock %}
+
+{% block content %}
+        <section id="tareas">
+            <h2>Tareas</h2>
+            <p>Visualiza las tareas creadas y tareas recomendadas por el sistema (Ej. Alertas de bajo stock)</p>
+        </section>
+
+        <section id="tareas">
+            <h2>Movimiento Diario</h2>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" value="{{ default_today }}">
+            <table id="movimiento-diario">
+                <thead>
+                    <tr>
+                        <th>LP</th>
+                        <th>Apellido & Nombre</th>
+                        <th>Accion</th>
+                        <th>Elemento</th>
+                        <th>Para...</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <p>Visualizacion de los movimientos y acciones realizadas durante el dia</p>
+        </section>
+
+        <section id="proyectos">
+            <h2>Stock General</h2>
+            <div class="proyectos-categorias">
+                <div class="categoria">Guantes</div>
+                <div class="categoria">Consumibles</div>
+                <div class="categoria">Repuestos</div>
+            </div>
+        </section>
+
+        <section id="elementos-entrega">
+            <h2>Elementos para Entregar</h2>
+            <p>Muestra los elementos que se encuentran a resguardo y el sector/personal al que se deba entregar.</p>
+        </section>
+
+        
+{% endblock %}

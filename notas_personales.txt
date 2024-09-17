@@ -1,0 +1,37 @@
+
+MODULACION:
+    /project-root/
+    │
+    ├── /app/
+    │   ├── /static/            # Archivos estáticos (CSS, JS, imágenes)
+    │   ├── /templates/         # Plantillas HTML
+    │   ├── /routes/
+    │   │   ├── __init__.py     # Inicializa el módulo de rutas
+    │   │   ├── main_routes.py  # Rutas principales
+    │   │   ├── form_routes.py  # Rutas relacionadas con formularios
+    │   │   └── ...             # Otros módulos de rutas
+    │   ├── /models/
+    │   │   ├── __init__.py     # Inicializa el módulo de modelos
+    │   │   ├── user_model.py   # Modelo de usuario
+    │   │   ├── epp_model.py    # Modelo de EPP
+    │   │   └── ...             # Otros modelos
+    │   ├── /services/
+    │   │   ├── __init__.py     # Inicializa el módulo de servicios
+    │   │   ├── form_service.py # Lógica de negocios para formularios
+    │   │   └── ...             # Otros servicios
+    │   ├── __init__.py         # Inicializa la aplicación Flask
+    │   ├── config.py           # Configuraciones de la aplicación
+    │   └── extensions.py       # Extensiones (p.ej., SQLAlchemy)
+    │
+    ├── tests/                  # Tests unitarios y de integración
+    │
+    └── run.py                  # Script para ejecutar la aplicación
+
+
+PROCESO DE AGREGAR UNA NUEVA PAGINA:
+    1_ Crear el archivo HTML
+    2_ Conectar el link de la pagina en layout
+    3_ Crear Blueprint
+    4_ Rendereizar la pagina en el Blueprint
+    5_ Cargar el Blueprint en el Init de routes
+    6_ importar el Blueprint en Init de app/

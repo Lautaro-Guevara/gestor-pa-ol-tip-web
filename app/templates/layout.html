@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pañol - Dashboard{% endblock %}</title>
+
+    <!-- CSS base -->
+    <link rel="stylesheet" href="../static/styles/styles.css">
+
+    <!-- Bloque para CSS adicionales -->
+    {% block link %}
+    {% endblock %}
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="foto">
+            <img src="../static/images/logo-tip.jpg" alt="Logo TIP - Pañol">
+        </div>
+        <div class="descripcion">
+            <a href="/" ><h1>Pañol</h1></a>
+            <p id="fecha-hora"></p>
+            <p>Email: <a href="mailto:tuemail@example.com">lautaro.guevara@tip-cr.com.ar</a></p>
+        </div>
+
+        <nav>
+            <ul>
+                <h3>Acciones</h3>
+                <li><a href="entregas-diarias.html">Entrega EPP / Consumibles</a></li>
+                <li><a href="herramientas-prestamo.html">Herramientas a Prestamo</a></li>
+                <li><a href="#">Herramientas a Cargo</a></li>
+                <li><a href="#">Nuevo Elemento de Izaje</a></li>
+                <li><a href="#">Movimiento Matafuego</a></li>
+                <li><a href="#">Realizar Pedido de Necesidad</a></li>
+                <h3>Información</h3>
+                <li><a href="listado-personal.html">Listado de Personal</a></li>
+                <li><a href="#">Internos</a></li>
+                <li><a href="matafuegos.html">Matafuegos</a></li>
+                <li><a href="#">Elementos Izaje</a></li>
+                <li><a href="#">Stock Total</a></li>
+                <h3>Ayuda</h3>
+                <li><a href="#">Procedimientos</a></li>
+                <li><a href="#">Imputaciones</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 Lautaro Guevara. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript base -->
+    <script src="../static/scripts/script.js"></script>
+
+    <!-- Bloque para scripts adicionales -->
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

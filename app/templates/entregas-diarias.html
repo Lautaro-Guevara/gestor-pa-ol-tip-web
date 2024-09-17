@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}Entregas EPP - Consumibles{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="../static/styles/entregas-diarias.css">
+{% endblock %}
+    
+{% block scripts %}
+<script src="../static/scripts/entregas-diarias.js" defer></script>
+<script src="../static/scripts/listas-desplegables.js" defer></script>
+{% endblock %}
+
+{% block content %}
+<section id="entrega-diaria">
+    <h2>Entrega de EPP y Consumibles</h2>
+
+    <form id="form-entrega-diaria" action="/entregas-diarias" method="post">
+        <div class="form-group">
+            <label for="legajo">Legajo:</label>
+            <select name="seleccion-lp" id="seleccion-lp">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                <!--Las opciones se cargan con js-->
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ default_today }}">
+        </div>
+
+        <div class="form-group">
+            <label for="seleccion-categoria">Categoría:</label>
+            <select id="seleccion-categoria" name="seleccion-categoria">
+                <!--Las opciones se cargan con js-->
+            </select>
+        </div>
+
+        <div class="form-group">
+             <label for="nombre-elemento">Nombre del Elemento:</label>
+             <!--
+            <select id="nombre-elemento" name="nombre-elemento" required>
+                 Añadir opciones aquí
+            </select>
+            <label for="otros-checkbox">
+                <input type="checkbox" id="otros-checkbox"> Otros
+            </label> -->
+
+            <!-- Input de texto que aparecerá si se selecciona "Otros" -->
+            <input type="text" id="nombre-elemento" name="nombre-elemento" placeholder="Especificar elemento..." >
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" value="1" min="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones" placeholder="Añade alguna observación"></textarea>
+        </div>
+
+        <button type="button" id="agregar-elemento">Agregar</button>
+    
+
+        <!-- Globo de texto con detalles agregados -->
+        <div id="detalles-agregados">
+            <!-- Aquí se mostrarán los elementos agregados -->
+            
+        </div>
+
+        <button type="submit" id="aceptar">Aceptar</button>
+
+    </form>
+
+    <p>Pendiente:
+        <li>Poder editar los registros agregados que estan a la espera de ser aceptados en caso de error</li>
+        <!-- <li>Poblar el campo de categorias en la base de datos</li> -->
+        <li>Poder escribir en los campos select para asi poder buscar entre las opciones</li>
+        <li>Poblar los nombres de los elementos</li>
+        <li>En caso de que un elemento que se deba registrar no se encuentre entre las opciones, poder escribir el nombre de ese elemto como "otros"</li>
+        <li>Mejorar la informacion que se visualiza en el globo de texto</li>
+        <li>checkbox de "Sin Contraentrega", conlleva modificar la tabla de ControlDiario en la base de datos</li>
+    </p>
+</section>
+
+
+{% endblock %}

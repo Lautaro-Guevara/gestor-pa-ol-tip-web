@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block title %}Listado Personal{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="../static/styles/tables.css">
+    <link rel="stylesheet" href="../static/styles/listado-personal.css">
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/scripts/listado-personal.js" defer></script>
+{% endblock %}
+
+{% block content %}
+        
+
+        <section id="informacion-individual">
+            <h2>Informacion Individual</h2>
+
+            <div>
+                <label for="seleccion-lp">Seleccionar Legajo Personal</label>
+                <select name="seleccion-lp" id="seleccion-lp">
+                    <option value="" disabled selected>Escoge tu opcion...</option>
+                    <!--Las opciones se cargan con js-->
+                </select>
+            </div>
+            <div>
+                 <!-- Tarjeta de información personal (inicialmente oculta) -->
+                <div id="tarjeta-personal" class="oculto">
+                    <div>
+                        <img src="../static/images/logo-tip.jpg" alt="Logo Tip">
+                    </div>
+                    <div id="informacion-basica-individual">
+                        <h3 id="legajo-personal">395</h3>
+                        <h4 id="apellido-nombre">Guevara Lautaro</h4>
+                        <h5 id="area">Administracion</h5>
+                        <h5 id="sector">Pañol</h5>
+                    </div>
+                    <div id="resumen-entregas-epp">
+                        <h3>Ultima Entrega...</h3>
+                        <h4>Mameluco: </h4>
+                        <h4>Calzado: </h4>
+                        <h4>Casco: </h4>
+                        <h4>Guantes: </h4>
+                        <!--La fecha de la ultima entrega se carga con js-->
+                    </div>
+                </div>
+                
+                <!-- Opciones y tabla de información individual (inicialmente oculto) -->
+                <div id="tablas-informacion-individual" class="oculto">
+                    <div id="opciones">
+                        <button>Retiros (EPP / Consumibles)</button>
+                        <button>Herramientas a Prestamo</button>
+                        <button>Herramientas a Cargo</button>
+                        <button>Todos los Movimientos</button>
+                    </div>
+                    <table>
+                        <!--La tabla seleccionada se carga con js-->
+                        
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+<section id="listado-personal">
+            <h2>Listado Personal</h2>
+            <div>
+                <label><input type="checkbox" id="lp" onchange="filtrarTabla()"> Mameluco</label>
+                <label><input type="checkbox" id="apellido" onchange="filtrarTabla()"> Calzado</label>
+                <!-- Agrega más checkboxes según sea necesario -->
+            </div>
+            <table id="tabla-personal">
+                <thead>
+                    <tr>
+                        <th>LP</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se insertan con js -->
+                </tbody>
+            </table>
+        </section>
+
+{% endblock %}
+
+
+
+<!-- 1_ Mostrar botones con las siguientes funciones
+
+Mostrar listado General (Tabla)
+    -LP
+    -Nombre y apellido
+    -Sector
+    -Actividad (Opcional)
+
+    Opcion secundaria (debe haber un checkbox que al cliquearlo debe aparecen la informacion pertinente)
+        -Talles de ropa
+            -Mameluco
+            -Calzado
+            -Pantalon
+            -Camisa
+            -Mameluco termico
+            -Campera
+
+        -Imputacion
+
+Mostrar Informacion Individual (Parecido a un panel)
+    -LP
+    -Nombre y apellido
+    -Foto (Opcional)
+
+    Opciones
+        -Ver herramientas a Cargo
+        -Ver Retiros
+            -EPP
+            -Consumibles
+        -Editar talles
+
+-->
