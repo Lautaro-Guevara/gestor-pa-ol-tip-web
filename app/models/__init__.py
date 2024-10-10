@@ -13,3 +13,13 @@ from .sector import Sector
 from .stock import Stock
 from .talles_epp import TallesEpp
 from .tipo_vestimenta import TipoVestimentaEpp
+
+
+"""
+Para generar una migracion (Modificacion de la base de datos) se debe escribir el siguiente comado en la terminal:
+    flask db migrate -m "Descripcion del cambio"
+
+Para sincronizar los cambios en la base de datos se debe escribir el siguiente comando en la terminal:
+    flask db upgrade
+
+"""

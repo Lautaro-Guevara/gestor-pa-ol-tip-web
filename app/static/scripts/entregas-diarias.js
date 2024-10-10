@@ -1,3 +1,5 @@
+import { listaEmpleados, listaCategorias } from "./modulo-listas-desplegables.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener los elementos del DOM
     const agregarElementoBtn = document.getElementById('agregar-elemento');
@@ -19,16 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const today = new Date().toISOString().split('T')[0];
     fechaInput.value = today;
 
-    // Manejar la visibilidad del input "Otros"
-    // otrosCheckbox.addEventListener('change', function () {
-    //     if (otrosCheckbox.checked) {
-    //         nombreElementoSelect.classList.add('oculto');
-    //         inputOtros.classList.remove('oculto');
-    //     } else {
-    //         nombreElementoSelect.classList.remove('oculto');
-    //         inputOtros.classList.add('oculto');
-    //     }
-    // });
+    listaEmpleados();
+    listaCategorias();
 
     // Función para agregar un nuevo registro
     agregarElementoBtn.addEventListener('click', function () {

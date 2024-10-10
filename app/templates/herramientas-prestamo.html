@@ -3,12 +3,99 @@
 {% block title %}Herramientas a Prestamo{% endblock %}
 
 {% block link %}
+<link rel="stylesheet" href="../static/styles/forms.css">
+<link rel="stylesheet" href="../static/styles/tables.css">
 {% endblock %}
     
 {% block scripts %}
+<script type="module" src="../static/scripts/modulo-listas-desplegables.js" defer></script>
+<script src="../static/scripts/fecha-default.js" defer></script>
+<script type="module" src="../static/scripts/herramientas-prestamo.js" defer></script>
 {% endblock %}
 
 {% block content %}
-<h1>Bienvenido a la Página Principal</h1>
-<p>Este es el contenido específico de la página principal.</p>
+<section id="herramientas-prestamo">
+    <h2>Herramientas a Prestamo</h2>
+
+    <form id="form-herramientas-prestamo"  method="post">
+        <div class="form-group">
+            <label for="entrega">Entrega</label>
+            <input type="radio" name="accion" value="entrega" id="entrega">
+
+            <label for="devolucion">Devolucion</label>
+            <input type="radio" name="accion" value="devolucion" id="devolucion">
+        </div>
+
+        <div id="cuerpo-formulario">
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ default_today }}">
+        </div>
+
+
+        <div class="form-group">
+            <label for="legajo">Legajo:</label>
+            <select name="seleccion-lp" id="seleccion-lp">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                <!--Las opciones se cargan con js-->
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" value="1" min="1" required>
+        </div>
+
+        <div class="form-group">
+             <label for="nombre-elemento">Nombre del Elemento:</label>
+             <div id="casilla-elemento">
+                
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones" placeholder="Añade alguna observación"></textarea>
+        </div>
+
+        <button type="button" id="agregar-elemento">Agregar</button>
+    
+
+        <!-- Globo de texto con detalles agregados -->
+        <div id="detalles-agregados">
+        <!-- Aquí se mostrarán los elementos agregados -->
+        </div>
+
+        <button type="submit" id="aceptar">Aceptar</button>
+
+    </form>
+</section>
+    <div>
+        <h2>Herramientas Prestadas</h2>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Elemento</th>
+                    <th>Legajo</th>
+                    <th>Apellido</th>
+                    <th>Observaciones</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+        </table>
+        <tbody>
+
+        </tbody>
+    </div>
+<section>
+
+</section>
 {% endblock %}

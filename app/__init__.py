@@ -24,12 +24,13 @@ def create_app():
     
 
     # Blueprints
-    from .routes import index_bp, lista_personal_bp, entregas_diarias_bp, matafuegos_bp, stock_bp
+    from .routes import index_bp, lista_personal_bp, entregas_diarias_bp, matafuegos_bp, stock_bp, herramientas_bp
     app.register_blueprint(index_bp)
     app.register_blueprint(lista_personal_bp)
     app.register_blueprint(entregas_diarias_bp)
     app.register_blueprint(matafuegos_bp)
     app.register_blueprint(stock_bp)
+    app.register_blueprint(herramientas_bp)
 
     # Manejadores de errores
     @app.errorhandler(404)

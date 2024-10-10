@@ -25,3 +25,35 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #f1f1f1; /* Efecto hover para las filas */
 }
+
+
+/* Botón de agregar */
+#agregar-elemento {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#agregar-elemento:hover {
+    background-color: #2980b9;
+}
+
+/* Detalles agregados (globo de texto) */
+#detalles-agregados {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    border: 1px solid #bdc3c7;
+    min-height: 100px;
+}
+
+#detalles-agregados p {
+    color: #333;
+}

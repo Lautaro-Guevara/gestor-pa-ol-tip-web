@@ -27,7 +27,7 @@ def registrar_entrega():
             if not elemento:
                 return "Elemento no encontrado", 400
     
-        # Capturar los datos del formulario
+         # Capturar los datos del formulario
             nueva_entrega = ControlDiario(
                 id_elemento = elemento.id_elementos,
                 legajo_personal = registro["legajo"],
@@ -77,7 +77,7 @@ def mostrar_entrega_diaria():
             "nombre": r[2],
             "apellido": r.apellido,
             "accion": r.accion,
-            "elemento_nombre": r[5]  # El nombre del elemento es el quinto campo en los resultados
+            "elemento_nombre": r[5]  # El nombre del elemento es el sexto campo en los resultados
         }
         for r in resultados
     ]
