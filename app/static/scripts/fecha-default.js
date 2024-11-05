@@ -1,3 +1,4 @@
+
 const fechaInput = document.getElementById('fecha');
 
   // Establecer la fecha actual por defecto

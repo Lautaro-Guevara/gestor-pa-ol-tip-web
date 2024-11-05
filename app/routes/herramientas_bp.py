@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify, url_for, request, redirect
 import json
-from app.models import HerramientasAPrestamo, ControlDiario, Elementos
+from app.models import HerramientasAPrestamo, ControlDiario, Elementos, Personal
 from app import db
 
 herramientas_bp = Blueprint("herramientas", __name__)
@@ -15,12 +15,11 @@ def registrar_prestamo_herramientas():
 
     """
     registros_json = request.form.get("registrosHerramientas")
-    print(registros_json)
     if not registros_json:
         return "No se recibieron datos", 400  # Agregar un mensaje de error si los datos no llegan correctamente
-    print(registros_json)
+    
     registros = json.loads(registros_json)
-    print(registros)
+    
 
     try:
         for registro in registros:
@@ -52,8 +51,13 @@ def devolucion_herramienta():
     Recibir nombre elemento y legajo
     agregar valor en fecha devolucion donde las condiciones sean true
     """
-    registros_json = request.form.get("registros")
+    registros_json = request.form.get("registrosHerramientas")
+    print(registros_json)
+    if not registros_json:
+        return "No se recibieron datos", 400  # Agregar un mensaje de error si los datos no llegan correctamente
+    print(registros_json)
     registros = json.loads(registros_json)
+    print(registros)
 
     try:
         for registro in registros:
@@ -81,7 +85,7 @@ def devolucion_herramienta():
             # Guardar los cambios en la base de datos
         db.session.commit()
 
-        return redirect(url_for("herramientas-prestamo.herramientas_bp"))
+        return redirect(url_for("herramientas.herramientas_prestamo_page"))
 
     except Exception as e:
         db.session.rollback()  # Rollback en caso de error
@@ -91,9 +95,23 @@ def devolucion_herramienta():
 @herramientas_bp.route("/herramienta-prestamo/historial", methods=["GET"])
 def historial_herramientas_prestadas():
 
-    historial = HerramientasAPrestamo.query.all()
+    historial = db.session.query(
+        HerramientasAPrestamo.legajo_personal,
+        HerramientasAPrestamo.fecha,
+        HerramientasAPrestamo.herramienta,
+        HerramientasAPrestamo.observaciones,
+        HerramientasAPrestamo.fecha_devolucion,
+        Personal.nombre,
+        Personal.apellido
+    ).join(Personal, HerramientasAPrestamo.legajo_personal == Personal.legajo_personal)\
+    .all()
+    
 
-    prestamos = [{"legajo": prestamo.legajo_personal, "fecha": prestamo.fecha,"elemento": prestamo.herramienta,"observaciones":prestamo.observaciones,"fecha_devolucion": prestamo.fecha_devolucion} for prestamo in historial]
+    #historial = HerramientasAPrestamo.query.all()
+
+    prestamos = [{"legajo": prestamo.legajo_personal, "fecha": prestamo.fecha,"elemento": prestamo.herramienta,"observaciones":prestamo.observaciones,"fecha_devolucion": prestamo.fecha_devolucion, "nombre": prestamo.nombre,"apellido": prestamo.apellido} for prestamo in historial]
+
+    
     
 
     return jsonify(prestamos)

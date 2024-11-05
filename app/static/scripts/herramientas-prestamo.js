@@ -2,6 +2,33 @@ import { listaEmpleados } from "./modulo-listas-desplegables.js";
 
 document.addEventListener("DOMContentLoaded", function(){
     listaEmpleados();
+    fetch('/herramienta-prestamo/historial')
+    .then(response => response.json())
+    .then(data => {
+        const tbody = document.getElementById("historial-prestamo-herramientas");
+        tbody.innerHTML = "";
+        data.forEach(registro => {
+            if (!registro.fecha_devolucion){
+              const fechaRegistro = new Date(registro.fecha)
+            const año = fechaRegistro.getFullYear();
+            const mes = String(fechaRegistro.getMonth()+1).padStart(2,"0");
+            const dia = String(fechaRegistro.getDate()+1).padStart(2,"0");
+            const nuevaFechaRegistro = `${dia}/${mes}/${año}`
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
+                <td>${nuevaFechaRegistro}</td>
+                <td>${registro.elemento}</td>
+                <td>${registro.legajo}</td>
+                <td>${registro.apellido} - ${registro.nombre}</td>
+                <td>${registro.observaciones}</td>
+                <td>${registro.cantidad}</td>
+                
+            `;
+            tbody.appendChild(fila)  
+            }
+            
+        });
+    });
 });
 
 
@@ -26,7 +53,7 @@ seleccion.forEach(radio => {
 
             `;
         } else if (accionSeleccionada === "devolucion") {
-            formulario.action = "/herramientas-prestamo/devolucion"
+            formulario.action = "/herramienta-prestamo/devolucion"
             // Si se selecciona "devolución", insertar otro contenido
 
             casillaElemento.innerHTML = "";
@@ -41,28 +68,26 @@ seleccion.forEach(radio => {
             `
 
             const listaHerramientasPrestadas = document.getElementById("nombre-elemento");
-            const legajoSeleccionado = document.getElementById("seleccion-lp").value
-            console.log(legajoSeleccionado)
-
-            listaHerramientasPrestadas.addEventListener("click", function(){
-
-                // Lista delplegable de Categorias de Inventario
-                fetch(`/herramienta-prestamo/adeudando?legajo=${legajoSeleccionado}`) // Seleccionar la ruta
-                .then(response => response.json())
-                .then(data => {
-                    
-
-                    if (listaHerramientasPrestadas) {
+            
+            
+            if (listaHerramientasPrestadas) {
+                listaHerramientasPrestadas.addEventListener("click", function(){
+                    listaHerramientasPrestadas.innerHTML = ""
+                    const legajoSeleccionado = document.getElementById("seleccion-lp").value
+                    // Lista delplegable de Categorias de Inventario
+                    fetch(`/herramienta-prestamo/adeudando?legajo=${legajoSeleccionado}`) // Seleccionar la ruta
+                    .then(response => response.json())
+                    .then(data => {
                         data.forEach(prestamo => {
                             const opcion = document.createElement("option");
                             opcion.value = prestamo.elemento;
                             opcion.innerHTML = `${prestamo.elemento}`;
                             listaHerramientasPrestadas.appendChild(opcion);
                         });
-                    }
-                })
-                .catch(error => console.error('Error al cargar la lista de herramientas adeudadas:', error));
-            });
+                        
+                    })
+                    .catch(error => console.error('Error al cargar la lista de herramientas adeudadas:', error));
+                })};
         }
         
     });
@@ -130,7 +155,10 @@ agregarElementoBtn.addEventListener("click", function(){
 // Función para enviar el formulario y los registros
 aceptarBtn.addEventListener('click', function (event) {
     
-    console.log(registrosHerramientas)
+    const legajoSelect = document.getElementById('seleccion-lp');
+    const fechaInput = document.getElementById('fecha');
+    const nombreElementoInput = document.getElementById('nombre-elemento');
+    const cantidadInput = document.getElementById('cantidad');
 
 
     //errorMsg.textContent = '';
@@ -154,9 +182,7 @@ aceptarBtn.addEventListener('click', function (event) {
     nombreElementoInput.value = '';
     cantidadInput.value = '1';
     observacionesInput.value = '';
-    registros = []
+    registrosHerramientas = [];
 
 });
-
-
 

@@ -7,7 +7,7 @@ class Matafuegos(db.Model):
     fecha_ingreso = db.Column(db.Date, nullable=True)
     capacidad_matafuego = db.Column(db.Enum('1 kg', '2.5 kg', '5 kg', '10 kg'), nullable=False)
     fecha_vencimiento = db.Column(db.Date, nullable=False)
-    fecha_vencimiento_prueba_hidraulica = db.Column(db.Date, nullable=False)
+    fecha_vencimiento_prueba_hidraulica = db.Column(db.Date, nullable=True)
     ubicacion_actual_matafuego = db.Column(db.String(100), nullable=True)
     ubicacion_anterior_matafuego = db.Column(db.String(100), nullable=True)
     fecha_ultimo_movimiento = db.Column(db.Date, nullable=True)
