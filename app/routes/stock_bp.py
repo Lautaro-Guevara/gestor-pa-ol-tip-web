@@ -8,5 +8,10 @@ stock_bp = Blueprint("stock",__name__)
 def mostrar_categorias():
     lista_categorias = CategoriasInventario.query.all()
 
-    categorias = [{"nombre": categoria.nombre} for categoria in lista_categorias]
+    categorias = [{
+        "id_categoria": categoria.id_categorias_inventario,
+        "nombre": categoria.nombre,
+        "id_padre": categoria.id_padre
+
+        } for categoria in lista_categorias]
     return jsonify(categorias)

@@ -1,7 +1,9 @@
 import { listaEmpleados } from "./modulo-listas-desplegables.js";
+import { fechaDefaultForm } from "./fecha-default.js";
 
 document.addEventListener("DOMContentLoaded", function(){
-    listaEmpleados();
+    listaEmpleados("#seleccion-lp");
+    fechaDefaultForm("#fecha")
     fetch('/herramienta-prestamo/historial')
     .then(response => response.json())
     .then(data => {
@@ -112,6 +114,7 @@ const detallesAgregados = document.getElementById('detalles-agregados');
 
 
 agregarElementoBtn.addEventListener("click", function(){
+    const fechaInput = document.getElementById('fecha');
     const legajoSelect = document.getElementById("seleccion-lp")
     const nombreElementoInput = document.getElementById('nombre-elemento');
     const cantidadInput = document.getElementById('cantidad');

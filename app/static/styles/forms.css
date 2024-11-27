@@ -51,6 +51,41 @@
     min-height: 80px;
 }
 
+/* Botón de agregar */
+#agregar-elemento {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#agregar-elemento:hover {
+    background-color: #2980b9;
+}
+
+/* Detalles agregados (globo de texto) */
+#detalles-agregados,
+#detalles-agregados-entrega,
+#detalles-agregados-devolucion {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    border: 1px solid #bdc3c7;
+    min-height: 100px;
+}
+
+#detalles-agregados p,
+#detalles-agregados-entrega p,
+#detalles-agregados-devolucion p {
+    color: #333;
+}
+
 /* Estilos para el botón de envío */
 button[type="submit"] {
     display: block;

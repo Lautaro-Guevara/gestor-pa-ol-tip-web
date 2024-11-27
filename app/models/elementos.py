@@ -6,7 +6,10 @@ class Elementos(db.Model):
     id_elementos = db.Column(db.Integer, primary_key=True)
     id_categorias_inventario = db.Column(db.Integer, db.ForeignKey('categorias_inventario.id_categorias_inventario'), nullable=False)
     nombre = db.Column(db.String(100), nullable=False)
+    cantidad = db.Column(db.Integer, nullable=False, default=0)
     
-    # Relación con Control Diario y Stock
+    # Relación con otras tablas como ControlDiario y Stock
     controles_diarios = db.relationship('ControlDiario', backref='elemento', lazy=True)
     stock = db.relationship('Stock', backref='elemento', lazy=True)
+
+

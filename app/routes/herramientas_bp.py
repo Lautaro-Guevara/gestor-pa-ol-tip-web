@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, jsonify, url_for, request, redirect
 import json
-from app.models import HerramientasAPrestamo, ControlDiario, Elementos, Personal
+from app.models import HerramientasAPrestamo, HerramientasACargo, ControlDiario, Elementos, Personal
 from app import db
 
 herramientas_bp = Blueprint("herramientas", __name__)
@@ -52,12 +52,12 @@ def devolucion_herramienta():
     agregar valor en fecha devolucion donde las condiciones sean true
     """
     registros_json = request.form.get("registrosHerramientas")
-    print(registros_json)
+    
     if not registros_json:
         return "No se recibieron datos", 400  # Agregar un mensaje de error si los datos no llegan correctamente
-    print(registros_json)
+    
     registros = json.loads(registros_json)
-    print(registros)
+    
 
     try:
         for registro in registros:
@@ -139,3 +139,45 @@ def herramientas_adeudadas():
     ]
 
     return jsonify(resultados)
+
+
+@herramientas_bp.route('/herramientas-cargo.html')
+def herramientas_cargo_page():
+    return render_template('herramientas-cargo.html')
+
+
+
+@herramientas_bp.route("/herramientas-cargo/cargo", methods=["POST"])
+def dejar_cargo_herramienta():
+
+    registros_json = request.form.get("registros")
+
+    
+    if not registros_json:
+        return "No se recibieron datos", 400  # Agregar un mensaje de error si los datos no llegan correctamente
+    
+
+    registros = json.loads(registros_json)
+
+    try:
+        for registro in registros:
+            cantidad = registro.get("cantidad", 1)  # Por si acaso 'cantidad' no está presente
+            
+            for _ in range(int(cantidad)):
+                registro_herramienta_a_cargo = HerramientasACargo(
+                    legajo_personal=registro["legajoDestinatario"],
+                    fecha_entrega=registro["fecha"],
+                    herramienta=registro["elemento"],
+                    id_herramienta=registro["numeroElemento"],
+                    procedencia=registro["legajoProcedencia"],
+                    observacion=registro["observaciones"]
+                )
+                db.session.add(registro_herramienta_a_cargo)
+
+        db.session.commit()
+
+        return redirect(url_for("herramientas.herramientas_cargo_page"))
+
+    except Exception as e:
+        db.session.rollback()  # Es una buena práctica hacer rollback en caso de error
+        return f"Error al registrar: {str(e)}", 500

@@ -3,12 +3,15 @@
 {% block title %}Entregas EPP - Consumibles{% endblock %}
 
 {% block link %}
-    <link rel="stylesheet" href="../static/styles/entregas-diarias.css">
+    
+    <link rel="stylesheet" href="../static/styles/forms.css">
+    <link rel="stylesheet" href="../static/styles/ventana-elementos.css">
 {% endblock %}
     
 {% block scripts %}
 <script type="module" src="../static/scripts/entregas-diarias.js" defer></script>
 <script type="module" src="../static/scripts/modulo-listas-desplegables.js" defer></script>
+<script type="module" src="../static/scripts/contenido-tabs.js" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -39,16 +42,39 @@
 
         <div class="form-group">
              <label for="nombre-elemento">Nombre del Elemento:</label>
-             <!--
-            <select id="nombre-elemento" name="nombre-elemento" required>
-                 Añadir opciones aquí
-            </select>
-            <label for="otros-checkbox">
-                <input type="checkbox" id="otros-checkbox"> Otros
-            </label> -->
+             
+             <div class="tabsNav">
 
-            <!-- Input de texto que aparecerá si se selecciona "Otros" -->
-            <input type="text" id="nombre-elemento" name="nombre-elemento" placeholder="Especificar elemento..." >
+                <div class="tab">
+
+                    <input type="radio" name="tabs" id="t1" checked>
+                    <label for="t1" >EPP</label>
+                    <div class="ventana-tab" id="contenido-tab-epp">
+                        
+                    </div>
+
+                </div>
+
+                <div class="tab">
+
+                    <input type="radio" name="tabs" id="t2">
+                    <label for="t2">Consumibles</label>
+                    <div class="ventana-tab" id="contenido-tab-consumibles">Ficha 2: Contenido para la ficha 2.</div>
+
+                </div>
+
+                <div class="tab"> 
+
+                    <input type="radio" name="tabs" id="t3">
+                    <label for="t3">Limpieza</label> 
+                    <div class="ventana-tab" id="contenido-tab-limpieza">Ficha 3: Contenido para la ficha 3
+                        <button type="button">Test</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- <input type="text" id="nombre-elemento" name="nombre-elemento" placeholder="Especificar elemento..." > -->
         </div>
 
         <div class="form-group">

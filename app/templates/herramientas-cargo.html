@@ -1,0 +1,250 @@
+<!-- templates/index.html -->
+{% extends "layout.html" %}
+
+{% block title %}Herramientas a Cargo{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="../static/styles/forms.css">
+<link rel="stylesheet" href="../static/styles/tabs-forms.css">
+<link rel="stylesheet" href="../static/styles/herramientas-a-cargo.css">
+{% endblock %}
+    
+{% block scripts %}
+<script src="../static/scripts/fecha-default.js"></script>
+<script type="module" src="../static/scripts/modulo-listas-desplegables.js" defer></script>
+<script type="module" src="../static/scripts/herramientas-cargo.js" defer></script>
+
+{% endblock %}
+
+{% block content %}
+
+<section id="test">
+
+    <div class="tabsNav">
+
+        <div class="tab">
+
+            <input type="radio" name="tabs" id="t1" checked>
+            <label for="t1" class="tab-label">Entrega</label>
+            <div class="ventana-tab" id="contenido-tab-epp">
+
+                <form action="/herramientas-cargo/cargo" id="form-herramientas-cargo-entrega" method="post">
+                    <div class="form-group">
+                        <label for="fecha-entrega">Fecha:</label>
+                        <input type="date" id="fecha-entrega" name="fecha-entrega" value="{{ default_today }}">
+                    </div>
+                    <fieldset id="fieldset-legajos">
+                        <div class="form-group">
+                            <label for="legajo">Procedencia:</label>
+                            <select name="seleccion-lp" id="lp-procedencia-entrega">
+                                <option value="pañol">Pañol</option>
+                                <!--Las opciones se cargan con js-->
+                            </select>
+                        </div>
+                        <div>
+                            <p>=></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="legajo">Destinatario:</label>
+                            <select name="seleccion-lp" id="lp-destinatario">
+                                <option value="" disabled selected>Escoge tu opcion...</option>
+                                <!--Las opciones se cargan con js-->
+                            </select>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset id="fieldset-elemento">
+                        <div class="form-group">
+                            <label for="cantidad-entrega">Cantidad:</label>
+                            <input type="number" id="cantidad-entrega" name="cantidad-entrega" value="1" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre-elemento-entrega">Nombre del Elemento:</label>
+                            <input type="text" name="nombre-elemento-entrega" id="nombre-elemento-entrega">
+                        </div>
+                        <div class="form-group">
+                            <label for="numeracion-elemento">Numeracion Elemento</label>
+                            <input type="text" name="numeracion-elemento" id="numeracion-elemento">
+                        </div>
+                    </fieldset>
+                    
+
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones:</label>
+                        <textarea id="observaciones-entrega" name="observaciones" placeholder="Añade alguna observación"></textarea>
+                    </div>
+
+                    <button type="button" id="agregar-elemento-entrega">Agregar</button>
+                
+            
+                    <!-- Globo de texto con detalles agregados -->
+                    <div id="detalles-agregados-entrega">
+                    <!-- Aquí se mostrarán los elementos agregados -->
+                    </div>
+            
+                    <button type="submit" id="aceptar-entrega">Aceptar</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="tab">
+
+            <input type="radio" name="tabs" id="t2">
+            <label for="t2" class="tab-label">Devolucion</label>
+            <div class="ventana-tab" id="contenido-tab-consumibles">
+                <form action="" id="form-herramientas-cargo-devolucion"></form>
+                    <div class="form-group">
+                        <label for="fecha-devolucion">Fecha:</label>
+                        <input type="date" id="fecha-devolucion" name="fecha-devolucion" value="{{ default_today }}">
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="legajo">Procedencia:</label>
+                        <select name="seleccion-lp" id="lp-procedencia-devolucion">
+                            <option value="" disabled selected>Escoge tu opcion...</option>
+                            <!--Las opciones se cargan con js-->
+                        </select>
+                    </div>
+
+                    <fieldset id="fieldset-elemento-devolucion">    
+                        <div class="form-group">
+                            <label for="cantidad">Cantidad:</label>
+                            <input type="number" id="cantidad" name="cantidad" value="1" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Elemento</label>
+                            <select name="" id="nombre-elemento-devolucion">
+                                <!--Las opciones se cargan con js-->
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="div-estado-elemento">
+                            <label for="estado-elemento">Estado</label>
+                            <select name="estado-elemento" id="estado-elemento">
+                                <option value="" disabled selected>En que estado está el elemento?...</option>
+                                <option value="sano">Sano</option>
+                                <option value="roto">Roto</option>
+                                <option value="perdido">Perdido</option>
+                            </select>
+                        </div>
+
+                    </fieldset>
+
+                    <div class="form-group">
+                        <label for="observaciones-devolucion">Observaciones:</label>
+                        <textarea id="observaciones-devolucion" name="observaciones-devolucion" placeholder="Añade alguna observación"></textarea>
+                    </div>
+                    
+
+
+                    <button type="button" id="agregar-elemento-devolucion">Agregar</button>
+
+
+                    <!-- Globo de texto con detalles agregados -->
+                    <div id="detalles-agregados-devolucion">
+                        <!-- Aquí se mostrarán los elementos agregados -->
+                    </div>
+
+                    <button type="submit" id="aceptar-devolucion">Aceptar</button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- <section id="herramientas-prestamo">
+    <h2>Herramientas a Cargo</h2>
+
+    <form id="form-herramientas-cargo"  method="post">
+        <div class="form-group">
+            <label for="entrega">Entrega</label>
+            <input type="radio" name="accion" value="entrega" id="entrega">
+
+            <label for="devolucion">Devolucion</label>
+            <input type="radio" name="accion" value="devolucion" id="devolucion">
+        </div>
+
+        <div id="cuerpo-formulario">
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ default_today }}">
+        </div>
+
+
+        <div class="form-group">
+            <label for="legajo">Procedencia:</label>
+            <select name="seleccion-lp" id="lp-procedencia">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                <option value="pañol">Pañol</option>
+                Las opciones se cargan con js
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="legajo">Destinatario:</label>
+            <select name="seleccion-lp" id="lp-destinatario">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                Las opciones se cargan con js
+            </select>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" value="1" min="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre-elemento">Nombre del Elemento:</label>
+            <div id="casilla-elemento">
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones" placeholder="Añade alguna observación"></textarea>
+        </div>
+
+        <button type="button" id="agregar-elemento">Agregar</button>
+    
+
+        Globo de texto con detalles agregados 
+        <div id="detalles-agregados">
+        Aquí se mostrarán los elementos agregados 
+        </div>
+
+        <button type="submit" id="aceptar">Aceptar</button>
+
+    </form>
+</section> -->
+
+<section>
+    <h3>Especificaciones</h3>
+    <ul>
+        <li>Poner a cargo herramientas a un operario</li>
+        <li>Poder visualizar las herramientas a cargo de determinado operario</li>
+        <li>Poder sacar de cargo una herramienta</li>
+        <li>ID registro Entrega / Fecha / LP / Procedencia / Destino / Cantidad / Elemento / Numero Articulo</li>
+        <li>Tabla de devoluciones? Conectada por id</li>
+        <li>ID registro Devolucion / ID registro Entrega / Fecha / Estado / Cantidad / </li>
+        <li>Estado: Sano - Roto - Perdido - Gastado (Resago)</li>
+    </ul>
+
+</section>
+{% endblock %}

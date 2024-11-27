@@ -1,6 +1,10 @@
 
-const fechaInput = document.getElementById('fecha');
 
-  // Establecer la fecha actual por defecto
+
+
+export function fechaDefaultForm(query) {
   const today = new Date().toISOString().split('T')[0];
-  fechaInput.value = today;
+  const fechaInput = document.querySelector(query)
+
+  fechaInput.value = today
+}

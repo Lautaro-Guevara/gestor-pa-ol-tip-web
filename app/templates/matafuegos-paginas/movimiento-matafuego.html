@@ -3,6 +3,7 @@
 {% block title %}Registrar Movimiento{% endblock %}
 
 {% block link %}
+<link rel="stylesheet" href="../../static/styles/forms.css">
 {% endblock %}
     
 {% block scripts %}
@@ -11,4 +12,46 @@
 {% block content %}
 <h1>Bienvenido a la Página Principal</h1>
 <p>Este es el contenido específico de la página principal.</p>
+<section id="movimiento-matafuego">
+    <h2>Movimiento Matafuego</h2>
+
+    <form action="" id="form-movimiento-matafuego">
+
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ default_today }}">
+        </div>
+        <div class="form-group">
+            <label for="id-matafuego">ID Matafuego:</label>
+            <select name="id-matafuego" id="id-matafuego">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                <!--Las opciones se cargan con js-->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="legajo">Legajo:</label>
+            <select name="seleccion-lp" id="seleccion-lp">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                <!--Las opciones se cargan con js-->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="destino">Destino:</label>
+            <select name="destino" id="destino">
+                <option value="" disabled selected>Escoge tu opcion...</option>
+                <!--Las opciones se cargan con js-->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="procedencia">Procedencia:</label>
+            <input type="text">
+        </div>
+        <div class="form-group">
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" name="observaciones" placeholder="Añade alguna observación"></textarea>
+        </div>
+
+        <button type="submit" id="aceptar">Aceptar</button>
+    </form>
+</section>
 {% endblock %}

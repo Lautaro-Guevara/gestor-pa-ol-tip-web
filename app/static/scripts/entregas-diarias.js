@@ -1,5 +1,9 @@
 import { listaEmpleados, listaCategorias } from "./modulo-listas-desplegables.js";
 
+import { contenidoTabEpp } from "./contenido-tabs.js";
+
+import { manejarClickBotones } from "./contenido-tabs.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     // Obtener los elementos del DOM
     const agregarElementoBtn = document.getElementById('agregar-elemento');
@@ -8,9 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const legajoSelect = document.getElementById('seleccion-lp');
     const fechaInput = document.getElementById('fecha');
     const nombreElementoInput = document.getElementById('nombre-elemento');
-    //const inputOtros = document.getElementById('input-otros');
     const cantidadInput = document.getElementById('cantidad');
-    //const otrosCheckbox = document.getElementById('otros-checkbox');
     const observacionesInput = document.getElementById('observaciones');
     const registros = [];  // Array para almacenar los registros
     
@@ -21,8 +23,70 @@ document.addEventListener('DOMContentLoaded', function () {
     const today = new Date().toISOString().split('T')[0];
     fechaInput.value = today;
 
-    listaEmpleados();
+    listaEmpleados("#seleccion-lp");
     listaCategorias();
+    contenidoTabEpp();
+
+    document.getElementById("contenido-tab-epp").addEventListener("click", function(event){
+        const resultado = manejarClickBotones(event);
+
+        const nombreElemento =  resultado[0].elemento;
+        const legajo = legajoSelect.value;
+        const fecha = fechaInput.value;
+        const observaciones = observacionesInput.value;
+        
+        
+
+        if (resultado[0].accion == "agregar") {
+            
+            // Agregar el registro a la lista de registros
+            registros.push({
+                legajo: legajo,
+                fecha: fecha,
+                nombreElemento: nombreElemento,
+                cantidad: 1,
+                observaciones: observaciones
+            });
+
+            console.log(registros)
+
+            // Mostrar el registro en el globo de detalles agregados
+            const nuevoDetalle = document.createElement('p');
+            const nombreElementoClass = new String(nombreElemento).replace(" ","-").toLocaleLowerCase()
+            nuevoDetalle.className = `${nombreElementoClass}`; // Asigna una clase basada en el nombre del elemento
+            nuevoDetalle.textContent = `Elemento: ${nombreElemento}, Cantidad: 1, Observaciones: ${observaciones}`;
+            detallesAgregados.appendChild(nuevoDetalle);
+
+        }
+
+        if (resultado[0].accion == "eliminar") {
+            const index = registros.findIndex(registro => registro.nombreElemento === nombreElemento);
+            console.log(index)
+
+            if (index !== -1){
+                console.log(registros[index])
+
+                registros.splice(index, 1);
+                console.log("Se ha eliminado", nombreElemento);
+                console.log(registros)
+
+                
+                const nombreElementoClass = new String(nombreElemento).replace(" ","-").toLocaleLowerCase()
+
+                const childEliminar = detallesAgregados.querySelector(`p.${nombreElementoClass}`);
+
+                if (childEliminar) {
+                    detallesAgregados.removeChild(childEliminar)
+                }
+                
+
+                
+            }
+
+            return false;
+        }
+    })
+    
 
     // Función para agregar un nuevo registro
     agregarElementoBtn.addEventListener('click', function () {
@@ -54,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Limpiar los campos después de agregar
         nombreElementoInput.value = '';
-        //inputOtros.value = '';
         cantidadInput.value = '1';
         observacionesInput.value = '';
     });

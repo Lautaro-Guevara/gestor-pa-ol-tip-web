@@ -1,10 +1,10 @@
 
-export function listaEmpleados(){
+export function listaEmpleados(query){
     // Lista Desplegable de Empleados
     fetch("/listado_personal")
         .then(response => response.json())
         .then(data => {
-            const selection = document.querySelector("#seleccion-lp");
+            const selection = document.querySelector(`${query}`);
             if (selection) {
                 data.forEach(persona => {
                     const opcion = document.createElement("option");
@@ -16,7 +16,7 @@ export function listaEmpleados(){
         })
         .catch(error => console.error('Error al cargar la lista de empleados:', error));
 }
-  
+
 
 export function listaCategorias(){
 

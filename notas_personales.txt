@@ -35,3 +35,145 @@ PROCESO DE AGREGAR UNA NUEVA PAGINA:
     4_ Rendereizar la pagina en el Blueprint
     5_ Cargar el Blueprint en el Init de routes
     6_ importar el Blueprint en Init de app/
+
+
+PAÑOL
+    Herramientas
+        Llaves
+            Metricas
+                Convencional
+                    Boca
+                        5mm
+                        6mm
+                        7mm
+                        8mm
+                        ...
+                    Anillo
+                    Boca - Boca
+                    Anillo - Anillo
+                    Combinada
+                Tubo
+                    Encastre 1/2"
+                    Encastre 3/4"
+                    Encastre 1"
+                Allem
+                Golpe
+
+            Pulgadas
+                Convencional
+                    Boca
+                        1/32"
+                        1/16"
+                        3/32"
+                        1/8"
+                        ...
+                    Anillo
+                    Boca - Boca
+                    Anillo - Anillo
+                    Combinada
+                Tubo
+                    Encastre 1/2"
+                    Encastre 3/4"
+                    Encastre 1"
+                Golpe
+        Mechas
+            Convencional
+            Widia
+            Largas
+
+        Machos
+            Withword
+            Metrico
+            GAS
+            Fina
+            Gruesa
+        
+        Terrajas
+            Withword
+            Metrico
+            GAS
+            Fina
+            Gruesa
+
+
+        Pinza
+        Limas
+            Cuadradas
+            Triangular
+            Cuchilla
+            Media Caña
+            Circular
+
+        Fresas
+        Medicion
+            Regla
+            Cinta Metrica
+
+
+    
+    Consumibles
+        Discos Amoladora
+            115mm
+                Corte
+                Desbaste
+                Flap
+
+            180mm
+                Corte
+                Desbaste
+                Flap
+
+        Tela Esmeril
+            Hoja
+            Banda
+
+        Fastix
+
+        Lubricante Multiuso
+
+    Elementos de Proteccion Personal (EPP)
+        Mameluco
+            Brin
+            Ignifugo
+            Termico
+            Descartable
+        Calzado Seguridad
+            Botin
+            Borcegui
+            Bota Petrolera
+        Guantes
+            Cuero Liviano
+            Anti Impacto
+            Nitrilo
+            Soldador
+            Lana
+            Dielectricos
+        Casco
+            Rojo
+            Amarillo
+            Blanco
+        Protecctor Auditivo
+            Tapon
+            Para Casco
+        Antiparras
+            Oscuras
+            Transparentes
+        Lentes Recetados
+            Oscuros
+            Transparentes
+
+
+
+    Matafuegos
+        1kg
+        2.5kg
+        5kg
+        10kg
+
+    Bidones
+
+    Izaje
+        Eslinga Acero
+        Faja Sintetica
+        Grillete
+
